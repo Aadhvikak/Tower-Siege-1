@@ -6,8 +6,9 @@ const Constraint = Matter.Constraint;
 var engine, world;
 var polygon,ground;
 var stand1, stand2;
-//var Slingshot;
+var slingShot;
 var polygon_img;
+ 
 
 function preload(){
     polygon_img=loadImage("polygon.png");
@@ -17,7 +18,7 @@ function setup() {
     createCanvas(900,400);
     engine = Engine.create();
     world = World.create();
-    Engine = run(engine);    
+    //Engine = run(engine);    
     ground = new Ground();
     stand1 = new Stand(390,300,250,10);
     stand2 = new Stand(700,200,200,10);
@@ -65,7 +66,7 @@ function setup() {
     polygon = Bodies.circle(50,200,20);
     World.add(world,polygon);
 
-    Slingshot = new Slingshot(this.polygon,{x:100,y:200});
+    slingShot = new Slingshot(this.polygon,{x:100,y:200});
 
 }
 
@@ -114,12 +115,12 @@ function draw() {
   blocks3.display();
   blocks4.display();
   blocks5.display();
-  fill("turquoise");
+  fill("pink");
   
   blocks6.display();
   blocks7.display();
   blocks8.display();
-  fill("pink")
+  fill("turquoise")
   
   blocks9.display();
   fill("gold");
@@ -127,7 +128,7 @@ function draw() {
   imageMode(CENTER)
   image(polygon_img ,polygon.position.x,polygon.position.y,40,40);
 
-  Slingshot.display();
+  slingShot.display();
   
 }
 
@@ -135,7 +136,7 @@ function draw() {
     Matter.Body.setPosition(this.polygon,{x:mouseX,y:mouseY});
   }
   function mouseReleased(){
-    Slingshot.fly();
+    slingShot.fly();
   }
 
 
